@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ROHAMA - Online Shopping</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo">ROHAMA</div>
+        <ul class="nav-links">
+            <li><a onclick="showView('home')">Home</a></li>
+            <li><a onclick="scrollToProducts()">Products</a></li>
+            <li><a onclick="toggleCartDrawer()">cart</a></li>
+            <li><a href="#">About</a></li>
+            <li><a id="auth-link" onclick="handleAuthClick()">Login</a></li>
+        </ul>
+        <div class="nav-icons">
+            <div id="dark-mode-toggle" title="Toggle Dark Mode"><i class="fas fa-moon"></i></div>
+            <div class="cart-icon" onclick="toggleCartDrawer()">
+                <i class="fas fa-shopping-cart"></i>
+                <span class="cart-count">0</span>
+            </div>
+        </div>
+    </nav>
+
+    <div id="home-view">
+        <header class="hero" id="home">
+            <div class="hero-content">
+                <h1>Future of Electronics</h1>
+                <p>Upgrade your lifestyle with our latest gadgets.</p>
+                <button class="btn-primary" onclick="scrollToProducts()">Shop Now</button>
+            </div>
+        </header>
+
+        <section class="category-banner">
+            <div class="banner-container">
+                <img src="https://images.unsplash.com/photo-1498049794561-7780e7231661?auto=format&fit=crop&w=1200&q=80" alt="Latest Tech Setup" class="featured-img">
+                <div class="banner-text">
+                    <h2>New Arrivals</h2>
+                    <p>Discover the latest in high-performance computing.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="products" id="products">
+            <h2 class="section-title">Featured Products</h2>
+            <div class="product-grid">
+                
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=500&q=80" alt="Headphones">
+                        <div class="image-overlay">
+                            <button class="icon-btn"><i class="fas fa-heart"></i></button>
+                            <button class="icon-btn"><i class="fas fa-share-nodes"></i></button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3>Wireless Headphones</h3>
+                        <p class="price">$199.00</p>
+                        <div class="actions">
+                            <button class="btn-cart"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+                            <button class="btn-buy">Buy Now</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=500&q=80" alt="Smartwatch">
+                        <div class="image-overlay">
+                            <button class="icon-btn"><i class="fas fa-heart"></i></button>
+                            <button class="icon-btn"><i class="fas fa-share-nodes"></i></button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3>Smart Watch Series 7</h3>
+                        <p class="price">$299.00</p>
+                        <div class="actions">
+                            <button class="btn-cart"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+                            <button class="btn-buy">Buy Now</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=500&q=80" alt="Laptop">
+                        <div class="image-overlay">
+                            <button class="icon-btn"><i class="fas fa-heart"></i></button>
+                            <button class="icon-btn"><i class="fas fa-share-nodes"></i></button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3>Pro Gaming Laptop</h3>
+                        <p class="price">$1,299.00</p>
+                        <div class="actions">
+                            <button class="btn-cart"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+                            <button class="btn-buy">Buy Now</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </div>
+
+    <div id="login-view" class="auth-view" style="display: none;">
+        <div class="auth-container">
+            <h2>Login to ROHAMA</h2>
+            <form id="login-form">
+                <div class="input-group">
+                    <label for="login-email">Email</label>
+                    <input type="email" id="login-email" required>
+                </div>
+                <div class="input-group">
+                    <label for="login-password">Password</label>
+                    <input type="password" id="login-password" required>
+                </div>
+                <button type="submit" class="btn-primary">Login</button>
+            </form>
+            <p>Don't have an account? <a onclick="showView('register')">Register here</a></p>
+            <p><a onclick="showView('home')">Back to Home</a></p>
+        </div>
+    </div>
+
+    <div id="register-view" class="auth-view" style="display: none;">
+        <div class="auth-container">
+            <h2>Register for ROHAMA</h2>
+            <form id="register-form">
+                <div class="input-group">
+                    <label for="register-name">Full Name</label>
+                    <input type="text" id="register-name" required>
+                </div>
+                <div class="input-group">
+                    <label for="register-email">Email</label>
+                    <input type="email" id="register-email" required>
+                </div>
+                <div class="input-group">
+                    <label for="register-password">Password</label>
+                    <input type="password" id="register-password" required>
+                </div>
+                <button type="submit" class="btn-primary">Register</button>
+            </form>
+            <p>Already have an account? <a onclick="showView('login')">Login here</a></p>
+            <p><a onclick="showView('home')">Back to Home</a></p>
+        </div>
+    </div>
+
+    <div id="dashboard-view" class="dashboard-wrapper" style="display: none;">
+        <div class="dashboard-container">
+            <h2>Welcome, <span id="user-name">User</span>! 👋</h2>
+            <p>You have successfully logged into your account.</p>
+            <br>
+            <hr>
+            <br>
+            <h3>Your Recent Orders</h3>
+            <p>You haven't placed any orders yet.</p>
+            <br>
+            <button class="btn-primary" onclick="logout()">Logout</button>
+        </div>
+    </div>
+
+    <div id="cart-drawer" class="cart-drawer">
+        <button class="close-drawer" onclick="toggleCartDrawer()">&times;</button>
+        <h2>Your Cart</h2>
+        <div id="cart-drawer-items" class="cart-items-container">
+            <p class="empty-cart-text">Your cart is empty.</p>
+        </div>
+        <div class="cart-summary">
+            <p>Total: $<span id="cart-total-amount">0.00</span></p>
+            <button class="btn-primary" onclick="proceedToCheckout()">Checkout</button>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-about">
+                <h3>ElectroStore</h3>
+                <p>We provide the highest quality electronics with global shipping and a 2-year warranty on all premium gadgets.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Customer Service</h4>
+                <ul>
+                    <li><a href="#">Track Order</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms & Conditions</a></li>
+                </ul>
+            </div>
+            <div class="footer-social">
+                <h4>Connect With Us</h4>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+        <p class="copyright">&copy; 2026 ElectroStore. Designed for Excellence.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
